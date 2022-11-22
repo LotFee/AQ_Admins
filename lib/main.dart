@@ -1,5 +1,6 @@
 import 'package:aq_admin/presentation/pages/get_start/get_start.page.dart';
 import 'package:aq_admin/service/navigations.service.dart';
+import 'package:egycoder_faker/egycoder_faker.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
