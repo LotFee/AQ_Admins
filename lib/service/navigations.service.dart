@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:aq_admin/injection_container.dart';
 import 'package:aq_admin/presentation/pages/add_city/add_city.page.dart';
 import 'package:aq_admin/presentation/pages/add_district/add_district.page.dart';
@@ -153,8 +151,8 @@ class NavigationService {
         name: estates,
         path: '/estates',
         builder: (context, state) => BlocProvider(
-          create: (context) => EstatesCubit(sl()),
-          child: EstatesPage(),
+          create: (context) => EstatesCubit(sl())..query(),
+          child: const EstatesPage(),
         ),
         routes: _estateSubRoutes,
       ),
@@ -177,9 +175,7 @@ class NavigationService {
         name: estatesFilter,
         path: '/estatesFilter',
         builder: (context, state) {
-          return EstatesPage(
-            ownerName: state.queryParams['ownerName'],
-          );
+          return const EstatesPage();
         },
       ),
       GoRoute(

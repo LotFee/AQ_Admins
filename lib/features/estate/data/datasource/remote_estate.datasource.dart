@@ -11,14 +11,17 @@ class FakeEstateDataSource extends RemoteEstateDataSource {
   @override
   Future<List<Estate>> query(int size, int index) async {
     await Future.delayed(const Duration(seconds: 3));
-
+    return [];
     return List<Estate>.generate(
-        10,
-        (index) => Estate.fromMap({
-              'title': faker.lorem.sentence,
-              'subtitle': faker.lorem.sentence,
-              'price': faker.decimal(min: 2000, max: 4000),
-              'image': faker.image.network(keywords: ['house']),
-            }));
+      10,
+      (index) => Estate.fromMap(
+        {
+          'title': faker.lorem.sentence,
+          'subtitle': faker.lorem.sentence,
+          'price': faker.decimal(min: 2000, max: 4000),
+          'image': faker.image.network(keywords: ['house']),
+        },
+      ),
+    );
   }
 }

@@ -16,8 +16,9 @@ class EstateRepositoryImpl extends EstateRepository {
   @override
   Future<Either<Failure, List<Estate>>> query(int size, int index) async {
     try {
+      logger.info('loading estates page $index ...');
       final estates = await remoteEstateDataSource.query(size, index);
-      logger.info(estates[1].toJson());
+      logger.info('estates page $index is loaded');
       return Right(estates);
     } on Failure catch (e) {
       return Left(e);
