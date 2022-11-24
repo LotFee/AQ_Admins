@@ -1,5 +1,6 @@
 import 'dart:js';
 
+import 'package:aq_admin/injection_container.dart';
 import 'package:aq_admin/presentation/pages/add_city/add_city.page.dart';
 import 'package:aq_admin/presentation/pages/add_district/add_district.page.dart';
 import 'package:aq_admin/presentation/pages/admins/admins.page.dart';
@@ -19,6 +20,7 @@ import 'package:aq_admin/presentation/pages/finance/finance.page.dart';
 import 'package:aq_admin/presentation/pages/forget_password/forget_password.page.dart';
 import 'package:aq_admin/presentation/pages/get_start/get_start.page.dart';
 import 'package:aq_admin/presentation/pages/history/history.page.dart';
+import 'package:aq_admin/presentation/pages/login/cubit/login_cubit.dart';
 import 'package:aq_admin/presentation/pages/login/login.page.dart';
 import 'package:aq_admin/presentation/pages/messages/messages.page.dart';
 import 'package:aq_admin/presentation/pages/negotiation/negotiation.page.dart';
@@ -29,6 +31,7 @@ import 'package:aq_admin/presentation/pages/reset_password/reset_password.page.d
 import 'package:aq_admin/presentation/pages/support/support.page.dart';
 import 'package:aq_admin/presentation/pages/task/task.page.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class NavigationService {
@@ -123,7 +126,7 @@ class NavigationService {
   /// *    /profile
   static final profile = UniqueKey().toString();
   late final router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/login',
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
@@ -134,7 +137,10 @@ class NavigationService {
       GoRoute(
         name: login,
         path: '/login',
-        builder: (context, state) => const LoginPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => LoginCubit(sl()),
+          child: const LoginPage(),
+        ),
         routes: _loginSubRoutes,
       ),
       GoRoute(
