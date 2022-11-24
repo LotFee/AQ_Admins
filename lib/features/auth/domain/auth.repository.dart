@@ -11,7 +11,18 @@ abstract class AuthRepository {
   ///
   /// else it will return remote failure error
   Future<Either<Failure, User>> login(String phoneNumber, String password);
+
+  /// this method helps admin to get [otp] code using his phone number
+  ///
+  /// if the phone number is correct it will return otp code.
+  ///
+  /// else it will return failure error
   Future<Either<Failure, String>> forgetPassword(String phoneNumber);
+
+  /// this method helps admin to ensure that the otp is true or not
+
   Future<Either<Failure, bool>> otp(String code);
-  Future<Either<Failure, User>> resetPass(String password);
+
+  /// this method help admins to  change his password.
+  Future<Either<Failure, bool>> resetPassword(String password);
 }
