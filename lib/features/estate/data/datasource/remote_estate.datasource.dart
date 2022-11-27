@@ -11,7 +11,6 @@ class FakeEstateDataSource extends RemoteEstateDataSource {
   @override
   Future<List<Estate>> query(int size, int index) async {
     await Future.delayed(const Duration(seconds: 3));
-    return [];
     return List<Estate>.generate(
       10,
       (index) => Estate.fromMap(
