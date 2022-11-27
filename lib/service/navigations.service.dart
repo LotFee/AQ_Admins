@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:aq_admin/injection_container.dart';
 import 'package:aq_admin/presentation/pages/add_city/add_city.page.dart';
 import 'package:aq_admin/presentation/pages/add_district/add_district.page.dart';
@@ -14,6 +12,7 @@ import 'package:aq_admin/presentation/pages/dashboard/dashboard.page.dart';
 import 'package:aq_admin/presentation/pages/estate_details/estate_details.page.dart';
 import 'package:aq_admin/presentation/pages/estate_details/sub_pages/questions.sub.page.dart';
 import 'package:aq_admin/presentation/pages/estate_details/sub_pages/review.sub.page.dart';
+import 'package:aq_admin/presentation/pages/estates/cubit/estates_cubit.dart';
 import 'package:aq_admin/presentation/pages/estates/estates.page.dart';
 import 'package:aq_admin/presentation/pages/filter/filter.page.dart';
 import 'package:aq_admin/presentation/pages/finance/finance.page.dart';
@@ -151,7 +150,10 @@ class NavigationService {
       GoRoute(
         name: estates,
         path: '/estates',
-        builder: (context, state) => EstatesPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => EstatesCubit(sl())..query(),
+          child: const EstatesPage(),
+        ),
         routes: _estateSubRoutes,
       ),
       GoRoute(
@@ -173,9 +175,7 @@ class NavigationService {
         name: estatesFilter,
         path: '/estatesFilter',
         builder: (context, state) {
-          return EstatesPage(
-            ownerName: state.queryParams['ownerName'],
-          );
+          return const EstatesPage();
         },
       ),
       GoRoute(
