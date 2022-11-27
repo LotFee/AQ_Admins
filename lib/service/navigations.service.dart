@@ -26,6 +26,7 @@ import 'package:aq_admin/presentation/pages/negotiation/negotiation.page.dart';
 import 'package:aq_admin/presentation/pages/notifications/notifications.page.dart';
 import 'package:aq_admin/presentation/pages/otp/otp.page.dart';
 import 'package:aq_admin/presentation/pages/profile/profile.page.dart';
+import 'package:aq_admin/presentation/pages/questions/questions.page.dart';
 import 'package:aq_admin/presentation/pages/reset_password/reset_password.page.dart';
 import 'package:aq_admin/presentation/pages/support/support.page.dart';
 import 'package:aq_admin/presentation/pages/task/task.page.dart';
@@ -83,7 +84,7 @@ class NavigationService {
   /// *    /negotiation
   static final negotiation = UniqueKey().toString();
 
-  /// *    /question
+  /// *    /questions
   static final questions = UniqueKey().toString();
 
   /// *    /review
