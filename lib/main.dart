@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) =>
           ResponsiveWrapper.builder(child, breakpoints: const [
         ResponsiveBreakpoint.resize(480, name: MOBILE),
-        ResponsiveBreakpoint.autoScale(800, name: TABLET),
+        ResponsiveBreakpoint.resize(800, name: TABLET),
         ResponsiveBreakpoint.resize(1000, name: DESKTOP),
         ResponsiveBreakpoint.autoScale(1700, name: 'XL'),
       ]),

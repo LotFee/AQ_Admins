@@ -2,12 +2,11 @@ import 'package:aq_admin/features/questions/domain/entity/question.entity.dart';
 import 'package:aq_admin/presentation/widgets/loading.widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_row_column.dart';
-import 'package:responsive_framework/responsive_wrapper.dart';
 
 class QuestionCard extends StatelessWidget {
   final Question question;
   const QuestionCard({super.key, required this.question});
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -34,33 +33,41 @@ class QuestionCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      question.apartmentTitle!,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w800, fontSize: 16),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      question.apartmentSubtitle!,
-                      style: const TextStyle(color: Colors.grey, fontSize: 12),
-                    ),
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        question.apartmentTitle!,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        question.apartmentSubtitle!,
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const Spacer(),
                 ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      foregroundColor: Colors.green,
-                      backgroundColor: Colors.green.shade100,
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    onPressed: () {},
-                    icon: const Icon(Icons.person),
-                    label: const Text('For Owner'))
+                    foregroundColor: Colors.green,
+                    backgroundColor: Colors.green.shade100,
+                  ),
+                  onPressed: () {},
+                  icon: const Icon(Icons.person),
+                  label: const Text('For Owner'),
+                )
               ],
             ),
             const SizedBox(height: 15),
@@ -120,6 +127,11 @@ class QuestionCard extends StatelessWidget {
                     ),
                   ],
                 ),
+              ],
+            ),
+            Row(
+              children: [
+                const Spacer(),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,

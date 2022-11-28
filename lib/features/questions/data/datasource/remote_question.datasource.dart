@@ -12,7 +12,7 @@ class FakeQuestionsDataSource extends RemoteQuestionDataSource {
   @override
   Future<List<Question>> getQuestion(int size, int index) async {
     logger.info('hello');
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(milliseconds: 300));
     return List<Question>.generate(
       10,
       (index) => Question.fromMap(
