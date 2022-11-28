@@ -12,19 +12,17 @@ class FakeQuestionsDataSource extends RemoteQuestionDataSource {
   @override
   Future<List<Question>> getQuestion(int size, int index) async {
     logger.info('hello');
-    await Future.delayed(
-      const Duration(seconds: 3),
-    );
+    await Future.delayed(const Duration(seconds: 3));
     return List<Question>.generate(
       10,
       (index) => Question.fromMap(
         {
           'id': faker.numberOfLength(5),
-          'image': faker.image.network(keywords: ['apartments']),
+          'image': faker.image.network(keywords: ['smile', 'dogs']),
           'apartmentTitle': faker.lorem.words(2).join(' '),
-          'apartmentSubtitle': faker.lorem.words(5).join(' '),
-          'body': faker.lorem.sentence,
-          'bookerImage': faker.image.network(keywords: ['person']),
+          'apartmentSubtitle': faker.lorem.words(3).join(' '),
+          'body': faker.lorem.sentences(5).join(' '),
+          'bookerImage': faker.image.network(keywords: ['animal']),
           'bookerName': faker.person.name,
         },
       ),

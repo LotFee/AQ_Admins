@@ -15,7 +15,7 @@ class QuestionsRepositoryImpl extends QuestionsRepository {
       int size, int index) async {
     try {
       final questions = await remoteQuestionDataSource.getQuestion(size, index);
-      logger.info(questions[0].toJson());
+      //logger.info(questions[0].toJson());
       return Right(questions);
     } on Failure catch (e) {
       return Left(e);

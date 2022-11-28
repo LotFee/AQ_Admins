@@ -14,7 +14,8 @@ class QuestionInitial extends QuestionState {
 }
 
 class QuestionLoadingState extends QuestionState {
-  const QuestionLoadingState(super.questions);
+  final bool isFirstLoading;
+  const QuestionLoadingState(super.questions, {required this.isFirstLoading});
 }
 
 class QuestionSuccessState extends QuestionState {

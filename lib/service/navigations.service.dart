@@ -26,6 +26,7 @@ import 'package:aq_admin/presentation/pages/negotiation/negotiation.page.dart';
 import 'package:aq_admin/presentation/pages/notifications/notifications.page.dart';
 import 'package:aq_admin/presentation/pages/otp/otp.page.dart';
 import 'package:aq_admin/presentation/pages/profile/profile.page.dart';
+import 'package:aq_admin/presentation/pages/questions/cubit/question_cubit.dart';
 import 'package:aq_admin/presentation/pages/questions/questions.page.dart';
 import 'package:aq_admin/presentation/pages/reset_password/reset_password.page.dart';
 import 'package:aq_admin/presentation/pages/support/support.page.dart';
@@ -192,7 +193,10 @@ class NavigationService {
       GoRoute(
         name: questions,
         path: '/questions',
-        builder: (context, state) => const QuestionsPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => QuestionCubit(sl())..getQuestion(),
+          child: const QuestionsPage(),
+        ),
       ),
       GoRoute(
         name: review,
